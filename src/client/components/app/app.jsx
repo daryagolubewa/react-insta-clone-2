@@ -48,10 +48,6 @@ export default class App extends Component {
     console.log(this.props);
     return (
       <div className={ cn() }>
-        <div>
-          <Link to={PAGES.login.path}>Log in</Link>
-          {/* <Link to={}></Link> */}
-        </div>
         { appRoutes(this.state.user, this.handleSetUser) }
       </div>
     );
