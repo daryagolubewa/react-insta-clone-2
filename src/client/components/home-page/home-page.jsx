@@ -40,7 +40,7 @@ export default class HomePage extends Component {
     let password = document.getElementById('password').value
     for ( let i = 0; i < this.props.users.length; i++){
       if ((this.props.users[i].nickName === name) && (this.props.users[i].password === password)){
-        this.props.history.push(`/users/${this.props.users[i].nickName}`)
+        return this.props.history.push(`/users/${this.props.users[i].nickName}`)
       }
     }
     window.Materialize.toast('Nick Name or password is not correct!', 5000)
