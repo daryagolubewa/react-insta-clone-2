@@ -8,6 +8,7 @@ import './app.css';
 import '../fonts/fonts.css';
 import appRoutes from '../../routes/routes'
 import Header from './header.jsx'
+import Footer from './footer'
 
 
 const cn = bemClassNameFactory('app');
@@ -52,6 +53,7 @@ export default class App extends Component {
       <div className={ cn() }>
         <Header/>
         { appRoutes(this.state.user, this.handleSetUser) }
+        <Footer/>
       </div>
     );
   }

@@ -41,3 +41,7 @@
 .header{
     display: inline-block;
 }
+
+footer{
+    margin-top: auto
+}
