@@ -49,6 +49,7 @@ export default class HomePage extends Component {
   render() {
     return (
       <div className='home-page'>
+      <center>
         <div className='form'>
           <Collapsible accordion>
             <CollapsibleItem header='Sign Up' >
@@ -63,6 +64,7 @@ export default class HomePage extends Component {
             </CollapsibleItem>
           </Collapsible>
         </div>
+      </center>
       </div>
     );
   }

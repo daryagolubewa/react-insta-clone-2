@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import Type from 'prop-types';
 import { Link } from 'react-router-dom';
-import elbrusImg from './elbrus.png';
+import instaImg from './insta.png';
 import { PAGES } from '../../routes/pages';
 import { bemClassNameFactory } from '../../utils/bem';
 import './app.css';
+import '../fonts/fonts.css';
 import appRoutes from '../../routes/routes'
+import Header from './header.jsx'
 
 
 const cn = bemClassNameFactory('app');
@@ -48,6 +50,7 @@ export default class App extends Component {
     console.log(this.props);
     return (
       <div className={ cn() }>
+        <Header/>
         { appRoutes(this.state.user, this.handleSetUser) }
       </div>
     );

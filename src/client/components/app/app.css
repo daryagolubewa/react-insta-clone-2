@@ -33,3 +33,11 @@
         }
     }
 }
+
+#insta{
+    width: 50px
+}
+
+.header{
+    display: inline-block;
+}
