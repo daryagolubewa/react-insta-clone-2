@@ -54,13 +54,13 @@ export default class HomePage extends Component {
           <Collapsible accordion>
             <CollapsibleItem header='Sign Up' >
               <Input s={6} label="Nick Name" id='newName' />
-              <Input s={6} type="password" label="passworp" id='newPassword' />
-              <Button waves='light' node='a' onClick={this.signUp}>Sign Up</Button>
+              <Input s={6} type="password" label="password" id='newPassword' />
+              <Button waves='light' node='a' onClick={this.signUp} className="button">Sign Up</Button>
             </CollapsibleItem>
             <CollapsibleItem header='Sign In' >
               <Input s={6} label="Nick Name" id="name"/>
               <Input s={6} type="password" label="passworp" id="password"/>
-              <Button waves='light' node='a' onClick={this.signIn}>Sign In</Button>
+              <Button waves='light' node='a' onClick={this.signIn} className="button">Sign In</Button>
             </CollapsibleItem>
           </Collapsible>
         </div>

@@ -4,3 +4,16 @@
 .home-page{
     margin: 0em 0em 0em em
 }
+
+.button{
+    background-color: #3F3F3F
+}
+
+Input:focus + label {
+    color: #3F3F3F !important;
+}
+
+Input:focus {
+border-bottom: 1px solid #3F3F3F !important;
+box-shadow: 0 1px 0 0 #3F3F3F !important
+}
