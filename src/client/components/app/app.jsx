@@ -32,27 +32,11 @@ export default class App extends Component {
   } 
 
 
-  // handleClickButton = () => {
-  //   const { buttonActive } = this.state;
-  //   console.log(buttonActive);
-  //   this.setState({ buttonActive: !buttonActive });
-  // };
-  //
-  // componentDidMount() {
-  //   const fetchFunc = async () => {
-  //     const res = await fetch('/api/test');
-  //     console.log(res);
-  //     return res;
-  //   };
-  //   fetchFunc();
-  // }
-
   render() {
     return (
       <div className={ cn() }>
         <Header/>
         { appRoutes(this.state.filter, this.handleSetFilter) } 
-        { appRoutes(this.state.user, this.handleSetUser) }
         <Footer/>
       </div>
     );

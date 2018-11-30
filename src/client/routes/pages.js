@@ -11,4 +11,8 @@ export const PAGES = {
     name: 'page404',
     path: '/page404'
   },
+  profile: {
+    name: 'profile',
+    path: '/profile'
+  }
 };

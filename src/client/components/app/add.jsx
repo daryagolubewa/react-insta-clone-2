@@ -15,7 +15,7 @@ componentDidMount() {
     return (
         <div>
             <Modal
-                trigger={<Button floating large className='grey' waves='light' icon='add' />}>                      
+                trigger={<Button large floating className='grey' large style={{bottom: '45px', right: '24px'}} icon='add' />}>                      
                 { (()=> { 
                     if(this.props.filter.sourse == '') {
                         return (
