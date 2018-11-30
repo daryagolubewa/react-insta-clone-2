@@ -6,6 +6,7 @@ import { PAGES } from '../../routes/pages';
 import { bemClassNameFactory } from '../../utils/bem';
 import './app.css';
 import appRoutes from '../../routes/routes'
+import AddPost from './add' 
 
 
 const cn = bemClassNameFactory('app');
@@ -20,11 +21,11 @@ export default class App extends Component {
   };
 
   state = {
-    user: null
+    filter:{sourse: ''}
   };
 
-  handleSetUser = (user) => {
-    this.setState({user})
+  handleSetFilter = async (name) => {
+    await this.setState({filter:{sourse: name}})
   } 
 
 
@@ -48,11 +49,12 @@ export default class App extends Component {
     console.log(this.props);
     return (
       <div className={ cn() }>
+      {/* <AddPost  {...this.state, this.handleSetUser}/> */}
         <div>
           <Link to={PAGES.login.path}>Log in</Link>
           {/* <Link to={}></Link> */}
         </div>
-        { appRoutes(this.state.user, this.handleSetUser) }
+        { appRoutes(this.state.filter, this.handleSetFilter) } 
       </div>
     );
   }

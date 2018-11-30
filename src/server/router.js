@@ -2,13 +2,14 @@ import express from 'express';
 import User from './models/user'
 import Post from './models/post'
 import Comment from './models/comment'
-
+import mongoose from 'mongoose'
+mongoose.connect('mongodb://localhost/reagram')
 
 const router = express.Router();
 
 router.post('/users/new', (req, res) => {
   let user = new User({
-    nickname: req.body.nickname,
+    nickname: req.body.nickName,
     password: req.body.password,
     posts: []
   })
