@@ -20,7 +20,6 @@ export default class HomePage extends Component {
   signUp = async () => {
     let newName = document.getElementById('newName').value
     let newPassword = document.getElementById('newPassword').value 
-    alert(newName)
     let res = await fetch('/api/addUser', {
       method: 'POST',
       headers: {
