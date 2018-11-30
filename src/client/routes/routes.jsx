@@ -5,6 +5,7 @@ import { PAGES } from './pages';
 import HomePage from '../components/home-page/home-page';
 import LoginPage from '../components/info-page/login';
 import Page404 from '../components/app/add';
+import Profile from '../components/user-info/user-info'
 
 
 export default (filter, setFilter) => (
@@ -22,10 +23,15 @@ export default (filter, setFilter) => (
       render={ props => <Page404 {...{...props, filter, setFilter}}/> }
     />
     <Route
+      exact path={ PAGES.profile.path }
+      render={ props => <Profile {...{...props, filter, setFilter}}/> }
+    />
+    <Route
       path = '/'
       render={ () => (
         <Redirect to={ PAGES.page404.path } />
       ) }
     />
+
   </Switch>
 );
