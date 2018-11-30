@@ -1,9 +1,25 @@
 import React, { Component } from 'react';
 import './user-info.css';
 import logo from './user-default-image.png';
-import settings from './user-settings.svg';
+import settingsLogo from './user-settings.svg';
 
 export default class UserInfo extends Component {
+  constructor() {
+    super();
+    this.state = {
+      profileInfo: null
+    };
+  }
+
+  componentDidMount() {
+    const getDbData = async () => {
+      const res = await fetch('/profile');
+      const dbData = await res.json();
+      this.setState({ profileInfo: dbData });
+    };
+    getDbData();
+  }
+
   render() {
     return (
             <div className='user-info__box'>
@@ -15,11 +31,11 @@ export default class UserInfo extends Component {
                 <div className='user-info__connections'>
                     <div className='user-info'>
                         <div className='user-info-info'>
-                            <div className='user-name'> Batman Batmanovich</div>
-                            <div className='user-description'> I am Batman!</div>
+                            <div className='user-name'> {profileInfo.nickname} </div>
+                            <div className='user-description'> {profileInfo.descripton} </div>
                         </div>
                     <div className='info-settings'>
-                        <img src={settings} className='settings-pic'/>
+                        <img src={settingsLogo} className='settings-pic'/>
                     </div>
                     </div>
                     <div className='user-info__statistics'>
