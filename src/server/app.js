@@ -5,8 +5,16 @@ import proxy from 'http-proxy-middleware';
 import handlebars from 'handlebars';
 import config from './config/default';
 import router from './router';
+import bodyParser from 'body-parser';
 
 const app = express();
+
+
+app.use(bodyParser.urlencoded({ extended: false })); // Form data
+app.use(bodyParser.json()); // JSON
+
+
+
 const { buildConfig: { assetsDir, targetDir }, server: { port }, proxyAssets } = config;
 
 if (config.appModeDev) {

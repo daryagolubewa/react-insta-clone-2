@@ -24,37 +24,45 @@ export default class HomePage extends Component {
     let res = await fetch('/api/addUser', {
       method: 'POST',
       headers: {
-          "Content-Type": "application/json; charset=utf-8",
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(this.props.users[0])
+      body: JSON.stringify({
+        nickName: newName,
+        password: newPassword
+      })
     })
-    console.log(res)
-    if (newName === '' && newPassword === ''){
-      window.Materialize.toast('Fill all fields, please!', 5000)      
+    if (res.status === 200){
+      if (newName === '' && newPassword === ''){
+        window.Materialize.toast('Fill all fields, please!', 5000)      
+      } else {
+        window.Materialize.toast('You are signed up!', 5000)
+      } 
     } else {
-      window.Materialize.toast('You are signed up!', 5000)
-    } 
+      window.Materialize.toast('This nick is already used!', 5000)
+    }
   }
 
-  signIn = () => {
+  signIn = async () => {
     let name = document.getElementById('name').value
     let password = document.getElementById('password').value
     let res = await fetch('/api/users', {
       method: 'POST',
       headers: {
-          "Content-Type": "application/json; charset=utf-8",
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(this.props.users[0])
+      body: JSON.stringify({
+        nickName: name,
+        password: password
+      })
     })
-    console.log(res)
     if (name === '' && password === ''){
         window.Materialize.toast('Fill all fields, please!', 5000)
     } else {
       if(res.status === 400) {
         window.Materialize.toast('Nick Name or password is not correct!', 5000)
       } else {
-        window.Materialize.toast('You are signed up!', 5000)
-        return this.props.history.push(`/users/${this.props.users[i].nickName}`)
+        window.Materialize.toast('You are signed in!', 5000)
+        return this.props.history.push(`/users/${name}`)
       }
     }
   }
