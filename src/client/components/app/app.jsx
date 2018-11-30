@@ -8,7 +8,7 @@ import './app.css';
 import '../fonts/fonts.css';
 import appRoutes from '../../routes/routes'
 import Header from './header.jsx'
-import Footer from './footer'
+import Footer from '../footer/footer'
 
 
 const cn = bemClassNameFactory('app');
