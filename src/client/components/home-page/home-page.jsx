@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import {Input, Button, Row, CollapsibleItem, Collapsible} from 'react-materialize'
+import {Input, Button, CollapsibleItem, Collapsible} from 'react-materialize'
 import Type from 'prop-types';
-import { PAGES } from '../../routes/pages';
 import './home-page.css'
-import { Redirect } from 'react-router';
 
 export default class HomePage extends Component {
   static propTypes = {
@@ -19,35 +17,45 @@ export default class HomePage extends Component {
     ]
   };
 
-  signUp = () => {
+  signUp = async () => {
     let newName = document.getElementById('newName').value
     let newPassword = document.getElementById('newPassword').value 
-    const fetchFunc = async () => {
-      const res = await fetch('/api/test', {
-        method: 'post',
-        headers: {
-            "Content-Type": "application/json; charset=utf-8",
-        },
-        body: JSON.stringify({nickName: newName, password: newPassword})
-      })
-      if (newName !== '' && newPassword !== ''){
-        if(res.status === 400) {
-          window.Materialize.toast('Fill all fields, please!', 5000)
-        }
-      }
-    };
-    fetchFunc();   
+    alert(newName)
+    let res = await fetch('/api/addUser', {
+      method: 'POST',
+      headers: {
+          "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify(this.props.users[0])
+    })
+    console.log(res)
+    if (newName === '' && newPassword === ''){
+      window.Materialize.toast('Fill all fields, please!', 5000)      
+    } else {
+      window.Materialize.toast('You are signed up!', 5000)
+    } 
   }
 
   signIn = () => {
     let name = document.getElementById('name').value
     let password = document.getElementById('password').value
-    for ( let i = 0; i < this.props.users.length; i++){
-      if ((this.props.users[i].nickName === name) && (this.props.users[i].password === password)){
+    let res = await fetch('/api/users', {
+      method: 'POST',
+      headers: {
+          "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify(this.props.users[0])
+    })
+    console.log(res)
+    if (name === '' && password === ''){
+        window.Materialize.toast('Fill all fields, please!', 5000)
+    } else {
+      if(res.status === 400) {
+        window.Materialize.toast('Nick Name or password is not correct!', 5000)
+      } else {
+        window.Materialize.toast('You are signed up!', 5000)
         return this.props.history.push(`/users/${this.props.users[i].nickName}`)
-      }
     }
-    window.Materialize.toast('Nick Name or password is not correct!', 5000)
   }
 
   render() {

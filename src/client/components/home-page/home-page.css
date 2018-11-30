@@ -17,3 +17,7 @@ Input:focus {
 border-bottom: 1px solid #3F3F3F !important;
 box-shadow: 0 1px 0 0 #3F3F3F !important
 }
+
+.button:hover{
+    background-color: rgb(117, 116, 116)
+}
