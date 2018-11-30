@@ -55,6 +55,7 @@ export default class HomePage extends Component {
       } else {
         window.Materialize.toast('You are signed up!', 5000)
         return this.props.history.push(`/users/${this.props.users[i].nickName}`)
+      }
     }
   }
 
