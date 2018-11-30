@@ -21,18 +21,22 @@ export default class HomePage extends Component {
 
   signUp = () => {
     let newName = document.getElementById('newName').value
-    let newPassword = document.getElementById('newPassword').value    
-    if (newName !== '' && newPassword !== ''){
-      let a = this.props.users.filter((i) => { return i.nickName == newName })
-      if(a.length == 0) {
-        this.props.users.push({
-          nickName: newName,
-          password: newPassword
-        })
+    let newPassword = document.getElementById('newPassword').value 
+    const fetchFunc = async () => {
+      const res = await fetch('/api/test', {
+        method: 'post',
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify({nickName: newName, password: newPassword})
+      })
+      if (newName !== '' && newPassword !== ''){
+        if(res.status === 400) {
+          window.Materialize.toast('Fill all fields, please!', 5000)
+        }
       }
-    } else {
-      window.Materialize.toast('Fill all fields, please!', 5000)
-    }
+    };
+    fetchFunc();   
   }
 
   signIn = () => {
