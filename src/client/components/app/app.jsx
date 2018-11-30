@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import Type from 'prop-types';
 import { Link } from 'react-router-dom';
-import instaImg from './insta.png';
 import { PAGES } from '../../routes/pages';
 import { bemClassNameFactory } from '../../utils/bem';
 import './app.css';
 import '../fonts/fonts.css';
 import appRoutes from '../../routes/routes'
-import Header from './header.jsx'
+import Header from '../header/header'
 import Footer from '../footer/footer'
 
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import instaImg from './insta.png';
-import './app.css';
+import './header.css';
 import '../fonts/fonts.css';
 
 
