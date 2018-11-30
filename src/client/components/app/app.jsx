@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Type from 'prop-types';
+import UserInfo from '../user-info/user-info';
 import { Link } from 'react-router-dom';
 import { PAGES } from '../../routes/pages';
 import { bemClassNameFactory } from '../../utils/bem';
@@ -11,7 +12,7 @@ import Footer from '../footer/footer'
 
 
 const cn = bemClassNameFactory('app');
- 
+
 export default class App extends Component {
   static propTypes = {
     appName: Type.string
@@ -26,28 +27,26 @@ export default class App extends Component {
   };
 
   handleSetUser = (user) => {
-    this.setState({user})
-  } 
-
-
-  handleClickButton = () => {
-    const { buttonActive } = this.state;
-    console.log(buttonActive);
-    this.setState({ buttonActive: !buttonActive });
-  };
-
-  componentDidMount() {
-    const fetchFunc = async () => {
-      const res = await fetch('/api/test');
-      console.log(res);
-      return res;
-    };
-    fetchFunc();
+    this.setState({ user });
   }
 
+
+  // handleClickButton = () => {
+  //   const { buttonActive } = this.state;
+  //   console.log(buttonActive);
+  //   this.setState({ buttonActive: !buttonActive });
+  // };
+  //
+  // componentDidMount() {
+  //   const fetchFunc = async () => {
+  //     const res = await fetch('/api/test');
+  //     console.log(res);
+  //     return res;
+  //   };
+  //   fetchFunc();
+  // }
+
   render() {
-    const { appName } = this.props;
-    console.log(this.props);
     return (
       <div className={ cn() }>
         <Header/>
