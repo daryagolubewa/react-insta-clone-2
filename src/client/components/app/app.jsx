@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import Type from 'prop-types';
+import UserInfo from '../user-info/user-info';
+import { Link } from 'react-router-dom';
+import { PAGES } from '../../routes/pages';
 import { bemClassNameFactory } from '../../utils/bem';
 import './app.css';
-import UserInfo from '../user-info/user-info';
+import '../fonts/fonts.css';
+import appRoutes from '../../routes/routes'
+import Header from '../header/header'
+import Footer from '../footer/footer'
 
 
 const cn = bemClassNameFactory('app');
@@ -42,7 +48,11 @@ export default class App extends Component {
 
   render() {
     return (
-            <UserInfo />
+      <div className={ cn() }>
+        <Header/>
+        { appRoutes(this.state.user, this.handleSetUser) }
+        <Footer/>
+      </div>
     );
   }
 }
