@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import Type from 'prop-types';
+import UserInfo from '../user-info/user-info';
 import { Link } from 'react-router-dom';
-import elbrusImg from './elbrus.png';
 import { PAGES } from '../../routes/pages';
 import { bemClassNameFactory } from '../../utils/bem';
 import './app.css';
+import '../fonts/fonts.css';
 import appRoutes from '../../routes/routes'
+import AddPost from './add' 
+import Header from '../header/header'
+import Footer from '../footer/footer'
 
 
 const cn = bemClassNameFactory('app');
- 
+
 export default class App extends Component {
   static propTypes = {
     appName: Type.string
@@ -20,39 +24,20 @@ export default class App extends Component {
   };
 
   state = {
-    user: null
+    filter:{sourse: ''}
   };
 
-  handleSetUser = (user) => {
-    this.setState({user})
+  handleSetFilter = async (name) => {
+    await this.setState({filter:{sourse: name}})
   } 
 
 
-  handleClickButton = () => {
-    const { buttonActive } = this.state;
-    console.log(buttonActive);
-    this.setState({ buttonActive: !buttonActive });
-  };
-
-  componentDidMount() {
-    const fetchFunc = async () => {
-      const res = await fetch('/api/test');
-      console.log(res);
-      return res;
-    };
-    fetchFunc();
-  }
-
   render() {
-    const { appName } = this.props;
-    console.log(this.props);
     return (
       <div className={ cn() }>
-        <div>
-          <Link to={PAGES.login.path}>Log in</Link>
-          {/* <Link to={}></Link> */}
-        </div>
-        { appRoutes(this.state.user, this.handleSetUser) }
+        <Header/>
+        { appRoutes(this.state.filter, this.handleSetFilter) } 
+        <Footer/>
       </div>
     );
   }

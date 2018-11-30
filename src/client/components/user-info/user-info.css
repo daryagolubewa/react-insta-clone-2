@@ -1,0 +1,48 @@
+
+.user-logo {
+    border-radius: 70px;
+    width: 140px;
+    height: 140px;
+}
+
+.user-info__box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.user-info_photo {
+    margin-right: 60px;
+}
+
+.user-info__connections {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.user-name {
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.user-info__statistics {
+    width: 230px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.settings-pic {
+    width: 30px;
+    height: 30px;
+}

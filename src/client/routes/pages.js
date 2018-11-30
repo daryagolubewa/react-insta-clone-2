@@ -10,5 +10,9 @@ export const PAGES = {
   page404: {
     name: 'page404',
     path: '/page404'
+  },
+  profile: {
+    name: 'profile',
+    path: '/profile'
   }
 };
