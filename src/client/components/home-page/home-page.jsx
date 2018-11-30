@@ -17,6 +17,14 @@ export default class HomePage extends Component {
     ]
   };
 
+  state = {
+    user: null
+  };
+
+
+    
+
+
   signUp = async () => {
     let newName = document.getElementById('newName').value
     let newPassword = document.getElementById('newPassword').value 
@@ -60,6 +68,8 @@ export default class HomePage extends Component {
       if(res.status === 400) {
         window.Materialize.toast('Nick Name or password is not correct!', 5000)
       } else {
+        this.setState({user: name})
+        console.log(this.state)
         window.Materialize.toast('You are signed in!', 5000)
         return this.props.history.push(`/users/${name}`)
       }
