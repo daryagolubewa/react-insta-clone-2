@@ -1,42 +1,31 @@
 import express from 'express';
+import User from './models/user'
+import Post from './models/post'
+import Comment from './models/comment'
+import mongoose from 'mongoose'
+mongoose.connect('mongodb://localhost/reagram')
 
 const router = express.Router();
 
-
-
-
-router.post('/addUser', (req, res) => {
-  let users = [
-    { 
-      nickName: '1', 
-      password: '1' 
-    }
-  ]
-  for (let i = 0; i < users.length; i++){
-    if(users[i].nickName === req.body.nickName){
-      return res.send(400, 'This nick is already used')
-    }
-  }
-  users.push({
-    nickName: req.body.nickName,
-    password: req.body.password
+router.post('/users/new', (req, res) => {
+  let user = new User({
+    nickname: req.body.nickName,
+    password: req.body.password,
+    posts: []
   })
-  return res.send(200, "Ok");
+  res.JSON({ status: 'Ok' });
 });
 
-router.post('/users', (req, res) => {
-  let users = [
-    { 
-      nickName: '1', 
-      password: '1' 
-    }
-  ]
-  for (let i = 0; i < users.length; i++){
-    if(users[i].nickName === req.body.nickName && users[i].password === req.body.password){
-      return res.send(200, "Ok");
-    }
-  }
-  return res.send(400, "Ok");
-});
+router.post('/posts/new', (req, res) => {
+  let post = new Post({
+    userId: req.body.user.id,
+    likes: [],
+    comments: [],
+    info: req.body.post.info,
+    createdAt: new Date.now()
+  })
+  user = 
+  res.json({ status: 'Ok' })
+})
 
 export default router;

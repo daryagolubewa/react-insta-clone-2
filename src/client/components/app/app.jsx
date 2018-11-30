@@ -7,6 +7,7 @@ import { bemClassNameFactory } from '../../utils/bem';
 import './app.css';
 import '../fonts/fonts.css';
 import appRoutes from '../../routes/routes'
+import AddPost from './add' 
 import Header from '../header/header'
 import Footer from '../footer/footer'
 
@@ -23,12 +24,12 @@ export default class App extends Component {
   };
 
   state = {
-    user: null
+    filter:{sourse: ''}
   };
 
-  handleSetUser = (user) => {
-    this.setState({ user });
-  }
+  handleSetFilter = async (name) => {
+    await this.setState({filter:{sourse: name}})
+  } 
 
 
   // handleClickButton = () => {
@@ -50,6 +51,7 @@ export default class App extends Component {
     return (
       <div className={ cn() }>
         <Header/>
+        { appRoutes(this.state.filter, this.handleSetFilter) } 
         { appRoutes(this.state.user, this.handleSetUser) }
         <Footer/>
       </div>
